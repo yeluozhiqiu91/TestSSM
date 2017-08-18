@@ -6,6 +6,8 @@ import com.wang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by wang on 2017/8/18.
  */
@@ -15,5 +17,9 @@ public class UserServiceImpl implements UserService{
     UserMapper userMapper;
     public void addStudent(Student student) {
         userMapper.addStudent(student);
+    }
+
+    public List<Student> findAllStudent() {
+        return userMapper.findAllStudent();
     }
 }

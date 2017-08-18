@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="log.context.name" value="test-ssm" />
+    <property name="log.charset" value="UTF-8" />
+    <property name="log.pattern" value="[%-5level] %date --%thread-- [%logger] %msg %n" />
+    
+   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{HH:mm:ss.SSS} %-5level %logger{60} - %msg%n
+         </pattern>
+      </encoder>
+   </appender>
+
+<appender name="testssmLoginLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Encoding>UTF-8</Encoding>
+		<file>/home/webserver/logs/java/testssm/api.log</file>
+		<prudent>true</prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/home/webserver/logs/java/testssm/api.log.%d{yyyyMMddHH}
+			</fileNamePattern>
+		</rollingPolicy>
+		<layout>
+			<pattern>${log.pattern}</pattern>
+		</layout>
+	</appender>
+   <logger name="com.wang">
+		<level value="${logback.level}" />
+		<appender-ref ref="testssmLoginLogFile" />
+	</logger>
+   <root level="${logback.level}">
+      <appender-ref ref="STDOUT" />
+   </root>
+</configuration>

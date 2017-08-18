@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * Created by wang on 2017/8/18.
  */
@@ -22,8 +24,9 @@ public class UserController {
     @RequestMapping("/addStudent")
     public ModelAndView addStudent(Student student){
         ModelAndView modelAndView=new ModelAndView();
-        userService.addStudent(student);
-        modelAndView.addObject("student",student);
+        //userService.addStudent(student);
+        List<Student> studentList=userService.findAllStudent();
+        modelAndView.addObject("studentList",studentList);
         modelAndView.setViewName("/user/studentList");
         return modelAndView;
     }

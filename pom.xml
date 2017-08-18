@@ -119,8 +119,56 @@
       <artifactId>mybatis-spring</artifactId>
       <version>${mybatis.spring.version}</version>
     </dependency>
+
+    <!--日志相关-->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.logback-extensions</groupId>
+      <artifactId>logback-ext-spring</artifactId>
+      <version>0.1.1</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>TestHbda2</finalName>
+    <resources>
+      <resource>
+        <filtering>false</filtering>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>config.xml</include>
+          <include>config.properties</include>
+          <include>*.xml</include>
+          <include>*/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <filtering>false</filtering>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>logback.xml</include>
+          <include>session.xml</include>
+          <include>*/*.xml</include>
+          <include>messages_zh_CN.properties</include>
+          <include>displaytag*.properties</include>
+          <include>com/yitop/police/web/vechice/common/mapper/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
 </project>
