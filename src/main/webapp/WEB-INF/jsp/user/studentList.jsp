@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-studentList
+${student.name},${student.age}
 </body>
 </html>

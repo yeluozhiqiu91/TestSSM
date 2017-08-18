@@ -5,6 +5,7 @@ import com.wang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by wang on 2017/8/18.
@@ -19,8 +20,11 @@ public class UserController {
         return "/user/register";
     }
     @RequestMapping("/addStudent")
-    public String addStudent(Student student){
+    public ModelAndView addStudent(Student student){
+        ModelAndView modelAndView=new ModelAndView();
         userService.addStudent(student);
-        return "/user/studentList";
+        modelAndView.addObject("student",student);
+        modelAndView.setViewName("/user/studentList");
+        return modelAndView;
     }
 }
