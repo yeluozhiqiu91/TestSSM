@@ -23,7 +23,7 @@
     <!--配置DruidDataSource-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
-        <!--url加这串“?useUnicode=true&amp;characterEncoding=utf8”是为了解决中文存到数据库乱码的问题-->
+        <!--url加这串“?useUnicode=true&amp;characterEncoding=utf8”是为了解决中文存到数据库显示问号的问题-->
         <property name="url" value="jdbc:mysql://localhost:3306/example?useUnicode=true&amp;characterEncoding=utf8" />
         <property name="username" value="root" />
         <property name="password" value="mysqladmin" />
