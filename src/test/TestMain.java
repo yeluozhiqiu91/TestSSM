@@ -2,7 +2,10 @@ import com.google.gson.GsonBuilder;
 
 /**
  * Created by wang on 2017/8/22.
- * gson将对象转为json时忽略注解了@Ignore的字段
+ * gson将对象转为json时忽略注解了@Ignore的字段，
+ * 参考资料：http://google.github.io/gson/apidocs/com/google/gson/ExclusionStrategy.html
+ * 参考资料：http://blog.csdn.net/u012045061/article/details/51440557
+ * 参考资料：http://blog.csdn.net/lionliu6/article/details/50787893
  */
 public class TestMain {
     public static void main(String args[]){
