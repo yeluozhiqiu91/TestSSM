@@ -14,6 +14,9 @@
     <druid.version>1.0.25</druid.version>
     <mybatis.version>3.2.3</mybatis.version>
     <mybatis.spring.version>1.2.2</mybatis.spring.version>
+    <servlet-api.version>3.0.1</servlet-api.version>
+
+    <tiles.version>3.0.5</tiles.version>
   </properties>
   <dependencies>
     <dependency>
@@ -142,6 +145,56 @@
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.3.1</version>
+    </dependency>
+      <!--<dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>servlet-api</artifactId>
+          <version>2.5</version>
+      </dependency>-->
+    <!--springmvc 将注解了@ResponseBody转为json依赖的包-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.4.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-core</artifactId>
+      <version>3.0.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-api</artifactId>
+      <version>${tiles.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-jsp</artifactId>
+      <version>${tiles.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-servlet</artifactId>
+      <version>3.0.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-template</artifactId>
+      <version>3.0.5</version>
+    </dependency>
+
+    <!-- Servlet -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet-api.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>

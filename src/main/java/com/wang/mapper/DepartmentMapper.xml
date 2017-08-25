@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.mapper.DepartmentMapper">
+    <resultMap id="DepartmentMapper" type="com.wang.model.Department">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="status" property="status"/>
+    </resultMap>
+    <select id="getAllDepartments" resultMap="DepartmentMapper">
+        select
+          id as id,
+          name as name,
+          code as code,
+          parent_id as parent_id,
+          create_user as create_user,
+          create_time as create_time,
+          status as status
+         from department where 1=1
+    </select>
+</mapper>

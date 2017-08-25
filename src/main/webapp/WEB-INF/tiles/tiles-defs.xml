@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- Main layout -->
+	 <definition name="layout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/common/head.jsp"
+			cascade="true" />
+		<put-attribute name="left" value="/WEB-INF/views/common/left.jsp"
+			cascade="true" />
+		<put-attribute name="headbar" value="/WEB-INF/views/common/headbar.jsp"
+			cascade="true" />
+		<put-attribute name="content" value="" cascade="true" />
+		<put-attribute name="foot" value="/WEB-INF/views/common/foot.jsp"
+			cascade="true" />
+		 <put-attribute name="footjs" value="/WEB-INF/views/common/footjs.jsp"
+						cascade="true" />
+	</definition>
+	<definition name="/user/*" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/{1}.jsp" />
+	</definition>
+</tiles-definitions>
