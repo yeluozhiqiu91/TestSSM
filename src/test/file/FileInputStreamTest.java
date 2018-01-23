@@ -18,10 +18,12 @@ public class FileInputStreamTest {
         }*/
         //上面是一个字节一个字节读和写，下面是每512个字节读写一次，明显下面要快，上面要3964ms,而下面只要11ms
         byte[] bytes=new byte[512];
-        while (fileInputStream.read(bytes)!=-1){
-            fileOutputStream.write(bytes);
+        while (fileInputStream.read(bytes)!=-1){//最大读取bytes.length个字节，读取的字节存在bytes里面
+            fileOutputStream.write(bytes); //将bytes.length个字节写入此输出流
         }
         long endtime=System.currentTimeMillis();
         System.out.println("总共用时："+(endtime-starttime)+"ms");
+        fileInputStream.close();
+        fileOutputStream.close();
     }
 }
