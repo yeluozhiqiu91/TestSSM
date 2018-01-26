@@ -72,7 +72,7 @@ public class VisitBinaryTree {
         if(node==null){
             return;
         }
-        Node prev=node;//记录根节点
+        Node prev=node;
         Stack<Node> s=new Stack<Node>();
         while (node!=null||!s.isEmpty()){
             while (node!=null){//从根开始，将它的左子节点压入栈，压倒最后，最左的左子节点肯定也在栈顶了
