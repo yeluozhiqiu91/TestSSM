@@ -72,7 +72,7 @@ public class VisitBinaryTree {
         if(node==null){
             return;
         }
-        Node prev=node;
+        Node prev=new Node('a');//这里先随便赋一个值,这个对象主要用于存储上一次从栈弹出去的节点
         Stack<Node> s=new Stack<Node>();
         while (node!=null||!s.isEmpty()){
             while (node!=null){//从根开始，将它的左子节点压入栈，压倒最后，最左的左子节点肯定也在栈顶了
@@ -81,7 +81,7 @@ public class VisitBinaryTree {
                 node=node.getLeftChild();
             }
             Node temp=s.peek().getRightChild();         //得到栈顶元素的右子节点
-            if(temp==null||temp==prev){                 //如果右子节点为空或者为记录的根节点  ，弹出栈顶元素并打印，根元素记为刚弹出的元素，否则把右子节点当做根，重复while内层循环
+            if(temp==null||temp==prev){                 //如果右子节点为空(或者前一次弹出的节点是当前栈顶的右子节点的话，说明当前栈顶的右子树已经遍历完了，轮到当前栈顶节点弹出了)  ，弹出栈顶元素并打印，prev用来记录刚弹出的元素，否则把右子节点当做根，重复while内层循环
                 node=s.pop();
                 //System.out.println("弹出元素："+node);
                 System.out.print(node);
