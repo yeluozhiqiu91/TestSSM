@@ -89,6 +89,13 @@
             document.getElementById("d"+(j+1)).innerHTML=arr[j];
         }
         temparr.push("");
+        //从0~8里面选一个跟temparr[8]替换
+        var r=Math.round(Math.random()*8);
+        if(r!=8){
+            temparr[8]=temparr[r];
+            temparr[r]="";
+        }
+        redraw();
     }
     //根据temparr记录的值重新填整个9宫格的值
     function redraw(){
