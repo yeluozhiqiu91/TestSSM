@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>puzzlenew2</title>
+    <style type="text/css">
+        .box{
+            width:98px;
+            height:98px;
+            margin:0;
+            padding:0;
+            background-color: #aaffee;
+            float:left;
+            text-align: center;
+            font-size: 26px;
+            border: 1px darkgrey solid;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container" style="width:530px;height:420px;border:1px solid silver;">
+    <div id="game" style="width:399px;height:399px;background-color: #ffe171;margin-top: 10px;margin-left:10px;float:left">
+        <div id="d1" class="box" onclick="move(1)">1</div>
+        <div id="d2" class="box" onclick="move(2)">2</div>
+        <div id="d3" class="box" onclick="move(3)">3</div>
+        <div id="d4" class="box" onclick="move(4)">4</div>
+        <div id="d5" class="box" onclick="move(5)">5</div>
+        <div id="d6" class="box" onclick="move(6)">6</div>
+        <div id="d7" class="box" onclick="move(7)">7</div>
+        <div id="d8" class="box" onclick="move(8)">8</div>
+        <div id="d9" class="box" onclick="move(9)">9</div>
+        <div id="d10" class="box" onclick="move(10)">10</div>
+        <div id="d11" class="box" onclick="move(11)">11</div>
+        <div id="d12" class="box" onclick="move(12)">12</div>
+        <div id="d13" class="box" onclick="move(13)">13</div>
+        <div id="d14" class="box" onclick="move(14)">14</div>
+        <div id="d15" class="box" onclick="move(15)">15</div>
+        <div id="d16" class="box" onclick="move(16)"></div>
+    </div>
+    <div id="control" style="width:100px;height:300px;margin-top:10px;margin-left:5px;float:right">
+        <div id="timeMessage" style="font-size: 12px">已用时<span id="timeId" style="color: #0000ff;"></span>秒</div>
+        <div id="stepMessage" style="font-size: 12px">已用<span id="stepId" style="color: #0000ff;">0</span>步</div>
+        <div id="restart" onclick="restart()" style="width: 90px;height: 30px;background-color: #4c98f5;margin-top: 10px;cursor: pointer">重新开始</div>
+        <div id="successTip"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var arr=new Array();
+    var temparr=new Array();
+    var time;
+    var stopTip;
+    var steps=0;
+    var size=4;
+    /**
+     *删除数组指定下标或指定对象
+     */
+    Array.prototype.remove=function(obj){
+        for(var i =0;i <this.length;i++){
+            var temp = this[i];
+            if(!isNaN(obj)){
+                temp=i;
+            }
+            if(temp == obj){
+                for(var j = i;j <this.length;j++){
+                    this[j]=this[j+1];
+                }
+                this.length = this.length-1;
+            }
+        }
+    }
+    //重来
+    function restart() {
+        time=0;
+        steps=0;
+        document.getElementById("stepId").innerHTML=0;
+        clearInterval(stopTip);//先清除可能存在的定时
+        stopTip=setInterval(function () {
+            time++;
+            document.getElementById("timeId").innerHTML=time;
+        },1000);
+        arr=new Array();
+        temparr=new Array();
+        document.getElementById("successTip").innerHTML="";
+       var temp=new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
+       var tempsize=temp.length;
+       for(var i=0;i<tempsize;i++){
+           var rannumber=Math.floor(Math.random()*temp.length);
+           arr.push(temp[rannumber]);
+           temparr.push(temp[rannumber]);
+           temp.remove(rannumber);
+       }
+       console.log(arr);
+        for(var j=0;j<arr.length;j++){
+            document.getElementById("d"+(j+1)).innerHTML=arr[j];
+        }
+        temparr.push("");
+        //从0~8里面选一个跟temparr[8]替换
+        var r=Math.round(Math.random()*15);
+        if(r!=15){
+            temparr[15]=temparr[r];
+            temparr[r]="";
+        }
+        redraw();
+    }
+    //根据temparr记录的值重新填整个9宫格的值
+    function redraw(){
+        var count=0;//记录位置正确的数字个数
+        for(var i=0;i<temparr.length;i++){
+            document.getElementById("d"+(i+1)).innerHTML=temparr[i];
+            if(temparr[i]==(i+1)){
+                count++;
+            }
+        }
+        if(count==15){
+            //alert("恭喜您，成功啦！");
+            document.getElementById("successTip").innerHTML="恭喜过关！";
+            clearInterval(stopTip);
+        }
+        document.getElementById("stepId").innerHTML=steps;
+    }
+    function move(i){
+        steps++;
+        var value=temparr[i-1];
+        if(value==""){
+            return;
+        }
+        var position=new Array(1,2,2,3,4,5,5,6,4,5,5,6,7,8,8,9);
+        switch(position[i-1]){
+            case 1://左上角
+                if(temparr[1]==""){
+                    temparr[1]=temparr[0];
+                }else if(temparr[i-1+size]==""){
+                    temparr[i-1+size]=temparr[0];
+                }else{
+                    return;
+                }
+                break;
+            case 2://上边
+                if(temparr[i-2]==""){
+                    temparr[i-2]=temparr[i-1];
+                }else if(temparr[i]==""){
+                    temparr[i]=temparr[i-1];
+                }else if(temparr[i-1+size]==""){
+                    temparr[i-1+size]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+            case 3://右上角
+                if(temparr[i-2]==""){
+                    temparr[i-2]=temparr[i-1];
+                }else if(temparr[i-1+size]==""){
+                    temparr[i-1+size]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+            case 4://左边
+                if(temparr[i-1-size]==""){
+                    temparr[i-1-size]=temparr[i-1];
+                }else if(temparr[i]==""){
+                    temparr[i]=temparr[i-1];
+                }else if(temparr[i-1+size]==""){
+                    temparr[i-1+size]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+            case 5://中间
+                if(temparr[i-1-size]==""){
+                    temparr[i-1-size]=temparr[i-1];
+                }else if(temparr[i-2]==""){
+                    temparr[i-2]=temparr[i-1];
+                }else if(temparr[i]==""){
+                    temparr[i]=temparr[i-1];
+                }else if(temparr[i-1+size]==""){
+                    temparr[i-1+size]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+            case 6://右边
+                if(temparr[i-1-size]==""){
+                    temparr[i-1-size]=temparr[i-1];
+                }else if(temparr[i-2]==""){
+                    temparr[i-2]=temparr[i-1];
+                }else if(temparr[i-1+size]==""){
+                    temparr[i-1+size]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+            case 7://左下角
+                if(temparr[i-1-size]==""){
+                    temparr[i-1-size]=temparr[i-1];
+                }else if(temparr[i]==""){
+                    temparr[i]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+            case 8://下边
+                if(temparr[i-1-size]==""){
+                    temparr[i-1-size]=temparr[i-1];
+                }else if(temparr[i-2]==""){
+                    temparr[i-2]=temparr[i-1];
+                }else if(temparr[i]==""){
+                    temparr[i]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+            case 9://右下角
+                if(temparr[i-1-size]==""){
+                    temparr[i-1-size]=temparr[i-1];
+                }else if(temparr[i-2]==""){
+                    temparr[i-2]=temparr[i-1];
+                }else{
+                    return;
+                }
+                break;
+        }
+        temparr[i-1]="";
+        redraw();
+    }
+</script>
