@@ -1,9 +1,9 @@
 package se.Tree;
 
 /**
- * Created by wang on 2018/1/25.
+ * Created by wang on 2018/1/29.
  */
-public class TreeTest {
+public class TestTreeNew {
     public static void main(String[] args) {
         Node root=new Node('A');
         Node l21=new Node('B');
@@ -20,22 +20,16 @@ public class TreeTest {
         l22.setLeftChild(l33);
         l22.setRightChild(l34);
         l31.setRightChild(l42);
-        System.out.print("先序：");
-        VisitBinaryTree.preOrderDiGui(root);
+        VisitBinaryTreeNew.preOrderDiGui(root);
         System.out.println();
-        System.out.print("中序：");
-        VisitBinaryTree.middleDiGui(root);
+        VisitBinaryTreeNew.middleOrderDiGui(root);
         System.out.println();
-        System.out.print("后序：");
-        VisitBinaryTree.afterDiGui(root);
+        VisitBinaryTreeNew.afterOrderDiGui(root);
         System.out.println();
-        System.out.print("非递归先序：");
-        VisitBinaryTree.preOrder(root);
+        VisitBinaryTreeNew.preOrder(root);
         System.out.println();
-        System.out.print("非递归中序：");
-        VisitBinaryTree.middle(root);
+        VisitBinaryTreeNew.middleOrder(root);
         System.out.println();
-        System.out.print("非递归后序：");
-        VisitBinaryTree.after(root);
+        VisitBinaryTreeNew.afterOrder(root);
     }
 }

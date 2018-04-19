@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lostthis</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var obj={
+        myName:'sven',
+        getName:function () {
+            return this.myName;
+        }
+    }
+    console.log(obj.getName());//sven
+    var getName2=obj.getName;
+    console.log(getName2());
+</script>

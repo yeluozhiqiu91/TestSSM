@@ -1,0 +1,15 @@
+package jvm;
+
+import java.net.URL;
+
+/**
+ * Created by wang on 2018/1/27.
+ */
+public class BootStrapTest {
+    public static void main(String[] args) {
+        URL[] urls=sun.misc.Launcher.getBootstrapClassPath().getURLs();
+        for(int i=0;i<urls.length;i++){
+            System.out.println(urls[i].toExternalForm());
+        }
+    }
+}

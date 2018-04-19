@@ -40,7 +40,7 @@ public class VisitBinaryTree {
         }
         Stack<Node> s=new Stack<Node>();
         while (node!=null||!s.isEmpty()){//外层循环主要是对栈的处理，先弹栈顶元素，将指针移到栈顶元素的右子节点，再将此右子节点同样进行内层while的处理
-            while(node!=null){                  //主要是先访问根，将根压入栈，指针移到左子节点，如此循环，最终的结果是，栈里面存的是从下到上，依次是根、根左子节点、下级左子节点。。。
+            while(node!=null){                  //主要是先访问根，将根压入栈，指针移到左子节点，如此循环，最终的结果是，栈里面存的是从下到上，依次是根、根左子节点、下级左子节点、下下级的左子节点。。。
                 System.out.print(node.toString());
                 s.push(node);
                 node=node.getLeftChild();
@@ -67,7 +67,7 @@ public class VisitBinaryTree {
         }
     }
 
-    //后续遍历，左右根，非递归
+    //后序遍历，左右根，非递归
     public static void after(Node node){
         if(node==null){
             return;

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多态</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var makeSound=function (obj) {
+        if(obj instanceof Duck){
+            console.log("嘎嘎嘎")
+        }else if(obj instanceof  Chicken){
+            console.log("咯咯咯")
+        }else{
+            console.log("不知道怎么叫")
+        }
+    }
+    var Duck=function () {
+
+    }
+    var Chicken=function () {
+
+    }
+    makeSound(new Duck());
+    makeSound(new Chicken());
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js克隆</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var Plane=function () {
+        this.blood=500;
+        this.speed=20;
+        this.acctackLevel=1;
+    }
+    var plane=new Plane();
+    plane.blood=501;
+    plane.speed=21;
+    plane.acctackLevel=2;
+    var newPlane=Object.create(plane);
+    console.log(newPlane)
+</script>
