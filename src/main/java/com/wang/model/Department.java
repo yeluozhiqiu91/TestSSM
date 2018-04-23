@@ -5,6 +5,7 @@ import java.util.Date;
 
 /**
  * Created by wang on 2017/8/23.
+ * test
  */
 public class Department implements Serializable{
     private Integer id;
